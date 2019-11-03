@@ -7,9 +7,9 @@ import java.util.List;
 public interface UserMapper {
 
     //根据账号查找user
-    List<User> findByUsername();
+    List<User> findByUsername(String username);
     //注册用户
-    int addUser();
+    int insertUser(User user);
     //修改密码
-    int updatePassword();
+    int updatePassword(User user);
 }
