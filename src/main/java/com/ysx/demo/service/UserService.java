@@ -1,14 +1,12 @@
 package com.ysx.demo.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.ysx.demo.model.User;
+import org.eclipse.jdt.internal.compiler.env.IModule;
 
 import java.util.List;
 
-public interface UserService {
-    // 用户注册
+public interface UserService extends IService<User> {
     boolean addUser(User user);
-    // 修改密码
-    boolean modifyPassword(User user);
-    //更具username查询
-    List<User> findByUsername(String username);
+    List<User> findUserByUsername(String username);
 }
