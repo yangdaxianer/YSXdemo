@@ -6,12 +6,14 @@ import com.ysx.demo.service.UserService;
 import com.ysx.demo.utils.RandomString;
 import com.ysx.demo.utils.ShiroPwdUtil;
 import com.ysx.demo.utils.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
+@Slf4j
 public class RegisterAndLoginController {
 
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(RegisterAndLoginController.class);
@@ -57,11 +60,10 @@ public class RegisterAndLoginController {
     public Object login(@RequestBody Map<String,Object> map){
         String username = (String) map.get("username");
         String password = (String) map.get("password");
-        if(StringUtil.isNotEmpty(username)&&!StringUtil.isNotEmpty(password)){
+        if(StringUtil.isNotEmpty(username)&&StringUtil.isNotEmpty(password)){
             try{
                 Subject subject = SecurityUtils.getSubject();
                 UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-                Serializable SessionId = subject.getSession().getId();
                 subject.login(token);
             }catch(LockedAccountException e){
                 /**账号锁定*/
@@ -73,8 +75,8 @@ public class RegisterAndLoginController {
                 /**账号不存在*/
                 return "账号不存在";
             }
-
+            return username+"登陆成功！";
         }
-        return username+"登录成功！";
+        return "账号或密码错误！";
     }
 }

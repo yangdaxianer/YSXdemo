@@ -95,11 +95,11 @@ public class ShiroConfig {
         listenerList.add(getMySessionListener());
         MySessionManager mySessionManager = new MySessionManager();
         //設置全局session過期時間
-        mySessionManager.setGlobalSessionTimeout(30*60*1000);
+        mySessionManager.setGlobalSessionTimeout(3*60*1000);
         //设置session监听器
         mySessionManager.setSessionListeners(listenerList);
         //定时查询所有session是否过期的时间
-        mySessionManager.setSessionValidationInterval(30*60*1000);
+        mySessionManager.setSessionValidationInterval(3*60*1000);
         //设置SessionDao,可以存入redis
         //mySessionManager.setSessionDAO(redisSessionDao());
         return mySessionManager;

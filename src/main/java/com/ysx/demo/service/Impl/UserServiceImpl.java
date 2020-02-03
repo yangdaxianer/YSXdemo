@@ -28,7 +28,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
     public List<User> findUserByUsername(String username) {
         Map<String, Object> columnMap = new HashMap<>();
         columnMap.put("username", username);
-        columnMap.put("delFlag",0);
+        columnMap.put("delFlag","0");
         return baseMapper.selectByMap(columnMap);
     }
 }
