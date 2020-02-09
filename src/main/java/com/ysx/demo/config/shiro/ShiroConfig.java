@@ -17,7 +17,7 @@ import java.util.*;
  * @author H2410910
  * @date 2019/10/29 17:20
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(ShiroConfig.class);
     @Bean
