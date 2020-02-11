@@ -1,6 +1,7 @@
 package com.ysx.demo.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -15,6 +16,8 @@ public class UserRole implements Serializable {
     private static final long serialVersionUID = -5288570209834621687L;
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    @TableField(value = "userId")
     private Integer userId;
+    @TableField(value = "roleId")
     private Integer roleId;
 }

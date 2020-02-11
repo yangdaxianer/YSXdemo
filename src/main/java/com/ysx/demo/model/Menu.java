@@ -1,6 +1,7 @@
 package com.ysx.demo.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -16,16 +17,22 @@ public class Menu implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     private String id;
     // 菜单名称
+    @TableField(value = "name")
     private String name;
     // 父菜单id
+    @TableField(value = "parentId")
     private String parentId;
     // 菜单url
+    @TableField(value = "url")
     private String url;
     // 菜单图标
+    @TableField(value = "icon")
     private String icon;
     // 菜单顺序
+    @TableField(value = "order")
     private int order;
     //菜单代码
+    @TableField(value = "code")
     private String code;
 
 }
